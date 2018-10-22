@@ -1,0 +1,36 @@
+debug: true
+logging:
+  path: /tmp/springboot
+spring:
+  output:
+    ansi:
+      enabled: DETECT
+  redis:
+    database: 0
+    host: 123.56.30.22
+    port: 6379
+    timeout: 60
+    password: ssj234561qaz!@#$
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+
+# 数据库配置
+  datasource:
+    url: jdbc:mysql://qdm16641668.my3w.com:3306/qdm16641668_db
+    username: qdm16641668
+    password: fanfanmysql
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      test-on-borrow: true
+      stat-view-servlet.allow: true
+
+mybatis:
+  config-locations: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml

@@ -1,0 +1,15 @@
+server:
+  port: 8081
+  context-path: /study
+
+# 单个配置
+cupSize: B
+age: 18
+content: "cupSize:${cupSize},age:${age}"
+
+# 分组配置
+girl:
+  cupSize: F
+  age: 28
+  content: "cupSize=${girl.cupSize},age=${girl.age}"
+

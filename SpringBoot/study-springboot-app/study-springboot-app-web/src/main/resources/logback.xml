@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration scan="true">
+    <!-- 控制台日志配置 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- 格式化 -->
+            <pattern>[shisj]-%d{yyyy-MM-dd HH:mm:ss} [%p] [%t] %c{36} - %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- info级别日志控制 -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>/tmp/springboot/logback.log</file>
+        <append>true</append>
+        <!-- encoders are assigned the type
+            ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>
