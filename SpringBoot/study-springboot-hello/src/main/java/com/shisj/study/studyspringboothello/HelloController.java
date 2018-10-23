@@ -1,6 +1,7 @@
 package com.shisj.study.studyspringboothello;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,17 @@ public class HelloController {
 
     @Autowired
     private GirlProperties girlProperties;
+
+    @Autowired
+    private Person person;
+
+    @RequestMapping(value = {"/person"},method=RequestMethod.GET)
+    public String mygirl(String name){
+        return "Hello SpringBoot!"
+                + person.getClass()+ " "
+                + person.getAge() + " "
+                + person.getName();
+    }
 
     @RequestMapping(value = {"/hello","/hi"},method=RequestMethod.GET)
     public String say(String name){
