@@ -1,0 +1,4 @@
+spring:
+  applicaiton:
+    name: feignclient
+
