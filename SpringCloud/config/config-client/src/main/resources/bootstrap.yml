@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: configclient
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: configserver
+      profile: dev
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/

@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: zuulgateway
+  zipkin:
+    base-url: http://localhost:9411/
+  sleuth:
+    sampler:
+      percentage: 1
+server:
+  port: 8888
+
+
+eureka:
+  client:
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  # all services are ignored
+#  ignoredServices: '*'
+  ignoredPatterns:
+    - /myprod/baned
+  routes:
+    # /prod/101 -->  zuulproduct服务的/101
+    zuulproduct: /prod/**
+    # /myprod  --> zuulproduct的服务
+    prod:
+      path: /myprod/**
+      serviceId: zuulproduct
+  host:
+    connect-timeout-millis: 2000

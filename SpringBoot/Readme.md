@@ -10,40 +10,40 @@
 使用maven工程构建spring-boot，需要引入的模块
 
 ```
-	<parent><!-- 当前项目继承自这个项目-->
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.4.1.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+  <parent><!-- 当前项目继承自这个项目-->
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.4.1.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-	</properties>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+  </properties>
 
-	<dependencies>
-		<dependency> <!-- web功能 -->
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+  <dependencies>
+    <dependency> <!-- web功能 -->
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
 
-		<dependency> <!-- test功能 -->
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+    <dependency> <!-- test功能 -->
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
-	<build>
-		<plugins>
-			<plugin> <!-- maven插件 可执行mvn spring-boot:task相关任务 -->
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+  <build>
+    <plugins>
+      <plugin> <!-- maven插件 可执行mvn spring-boot:task相关任务 -->
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 ```
 **java启动入口**
 启动入口需要`@SpringBootApplication`注解进行标注，在main方法中，使用`SpringApplication`的run方法启动应用
@@ -51,10 +51,10 @@
 @SpringBootApplication
 public class StudySpringbootHelloApplication {
 
-	public static void main(String[] args) {
+  public static void main(String[] args) {
 
-		SpringApplication.run(StudySpringbootHelloApplication.class, args);
-	}
+    SpringApplication.run(StudySpringbootHelloApplication.class, args);
+  }
 }
 ```
 
@@ -196,17 +196,17 @@ public String hii2(@RequestBody Map<String,Object> reqMap){
 SpringBoot也可以使用模块化进行开发，使用maven的方式即可
 ```
 study-springboot-app
-	-\ study-springboot-app-model
-	-\ study-springboot-app-persistence
-	-\ study-springboot-app-web
+  -\ study-springboot-app-model
+  -\ study-springboot-app-persistence
+  -\ study-springboot-app-web
 ```
 
 最外层study-springboot-app的pom.xml中，将该项目配置为使用SptingBoot的相关依赖，做为`spring-boot-starter-parent`的子项目，并引入需要的SpringBoot模块，并使用下面的配置设置子模块
 ```
 <modules>
-	<module>study-springboot-app-web</module>
-	<module>study-springboot-app-persistence</module>
-	<module>study-springboot-app-model</module>
+  <module>study-springboot-app-web</module>
+  <module>study-springboot-app-persistence</module>
+  <module>study-springboot-app-model</module>
 </modules>
 <packaging>pom</packaging>
 ```
@@ -276,8 +276,8 @@ public class GlobalExceptionHandler {
 集成redis时需要引入下面的依赖：
 ```
 <dependency>
-	<groupId>org.springframework.boot</groupId>
-	<artifactId>spring-boot-starter-data-redis</artifactId>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-data-redis</artifactId>
 </dependency>
 ```
 redis的配置如下：
@@ -312,20 +312,20 @@ stringRedisTemplate.opsForValue().get("aaa");
 ```
 <!-- 整合Mybatis -->
 <dependency>
-	<groupId>com.alibaba</groupId>
-	<artifactId>druid</artifactId>
-	<version>1.0.20</version>
+  <groupId>com.alibaba</groupId>
+  <artifactId>druid</artifactId>
+  <version>1.0.20</version>
 </dependency>
 <dependency>
-	<groupId>mysql</groupId>
-	<artifactId>mysql-connector-java</artifactId>
-	<version>5.1.21</version>
+  <groupId>mysql</groupId>
+  <artifactId>mysql-connector-java</artifactId>
+  <version>5.1.21</version>
 </dependency>
 
 <dependency>
-	<groupId>org.mybatis.spring.boot</groupId>
-	<artifactId>mybatis-spring-boot-starter</artifactId>
-	<version>1.1.1</version>
+  <groupId>org.mybatis.spring.boot</groupId>
+  <artifactId>mybatis-spring-boot-starter</artifactId>
+  <version>1.1.1</version>
 </dependency>
 ```
 引入依赖后，需要指定配置: 指定数据源配置和mybatis的配置
@@ -344,8 +344,8 @@ spring:
       test-on-borrow: true
       stat-view-servlet.allow: true
 mybatis:
-  config-locations: classpath:mybatis-config.xml
   mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.shisj.study.dinner.product.dataobject
 ```
 
 在mybatis-config.xml中，设置了mybatis的相关配置，比引用了其他的mapper.xml，xml文件中，namespace是指定的mapper类，mapper类是一个接口，内部的方法与sql语句的id相对应。
@@ -425,23 +425,23 @@ private String name;
 
 提供的校验规则有如下几种：
 ```
-@Null	限制只能为null
-@NotNull	限制必须不为null
-@AssertFalse	限制必须为false
-@AssertTrue	限制必须为true
-@DecimalMax(value)	限制必须为一个不大于指定值的数字
-@DecimalMin(value)	限制必须为一个不小于指定值的数字
-@Digits(integer,fraction)	限制必须为一个小数，且整数部分的位数不能超过integer，小数部分的位数不能超过fraction
-@Future	限制必须是一个将来的日期
-@Max(value)	限制必须为一个不大于指定值的数字
-@Min(value)	限制必须为一个不小于指定值的数字
-@Past	限制必须是一个过去的日期
-@Pattern(value)	限制必须符合指定的正则表达式
-@Size(max,min)	限制字符长度必须在min到max之间
-@Past	验证注解的元素值（日期类型）比当前时间早
-@NotEmpty	验证注解的元素值不为null且不为空（字符串长度不为0、集合大小不为0）
-@NotBlank	验证注解的元素值不为空（不为null、去除首位空格后长度为0），不同于@NotEmpty，@NotBlank只应用于字符串且在比较时会去除字符串的空格
-@Email	验证注解的元素值是Email，也可以通过正则表达式和flag指定自定义的email格式
+@Null 限制只能为null
+@NotNull  限制必须不为null
+@AssertFalse  限制必须为false
+@AssertTrue 限制必须为true
+@DecimalMax(value)  限制必须为一个不大于指定值的数字
+@DecimalMin(value)  限制必须为一个不小于指定值的数字
+@Digits(integer,fraction) 限制必须为一个小数，且整数部分的位数不能超过integer，小数部分的位数不能超过fraction
+@Future 限制必须是一个将来的日期
+@Max(value) 限制必须为一个不大于指定值的数字
+@Min(value) 限制必须为一个不小于指定值的数字
+@Past 限制必须是一个过去的日期
+@Pattern(value) 限制必须符合指定的正则表达式
+@Size(max,min)  限制字符长度必须在min到max之间
+@Past 验证注解的元素值（日期类型）比当前时间早
+@NotEmpty 验证注解的元素值不为null且不为空（字符串长度不为0、集合大小不为0）
+@NotBlank 验证注解的元素值不为空（不为null、去除首位空格后长度为0），不同于@NotEmpty，@NotBlank只应用于字符串且在比较时会去除字符串的空格
+@Email  验证注解的元素值是Email，也可以通过正则表达式和flag指定自定义的email格式
 ```
 
 **自定义验证器**
@@ -456,8 +456,8 @@ private String name;
 1. 引入依赖
 ```
 <dependency>
-	<groupId>org.springframework.boot</groupId>
-	<artifactId>spring-boot-starter-aop</artifactId>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-aop</artifactId>
 </dependency>
 ```
 
@@ -496,7 +496,7 @@ public class HttpAspect {
     public void log2(){
         logger.info("update record");
     }
-	@AfterReturning(pointcut = "log()",returning = "object")
+  @AfterReturning(pointcut = "log()",returning = "object")
     public void doAfterReturning(Object object){
         logger.info("response={}",object);
     }
@@ -504,4 +504,41 @@ public class HttpAspect {
 ```
 
 
-## 11.多数据源
+## 11. 测试
+
+如果不是web容器中
+```
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class ProductServiceTest {
+    @Autowired
+    private ProductService productService;
+
+    @Test
+    public void findOne() throws Exception {
+
+        List<ProductInfo> productList = productService.findAllProductByStatus(0);
+        Assert.assertTrue(((List) productList).size() > 0);
+    }
+}
+```
+
+如果在web容器
+
+```
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class GatewayTest {
+
+    @Value("http://localhost:${local.server.port}/manager")
+    private String baseUrl;
+
+   @Test
+    public  void test(){
+
+   }
+}
+```
+
+
+## 12. 多数据源

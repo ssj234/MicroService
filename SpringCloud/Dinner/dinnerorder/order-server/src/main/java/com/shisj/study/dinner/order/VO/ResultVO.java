@@ -1,6 +1,6 @@
-package com.shisj.study.dinner.product.VO;
+package com.shisj.study.dinner.order.VO;
 
-import com.shisj.study.dinner.product.enums.ResultEnum;
+import com.shisj.study.dinner.order.enums.ResultEnum;
 
 public class ResultVO<T> {
     private int code;

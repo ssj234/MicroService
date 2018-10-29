@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shisj.study.dinner.order.mapper.OrderMapper" >
+
+    <insert id="saveOrderMaster" parameterType="OrderMaster">
+        insert into dinner_order_master(id,pricesum,status) values(#{orderId},#{priceSum},#{status})
+    </insert>
+
+    <insert id="saveOrderDetail" parameterType="OrderDetail">
+        insert into dinner_order_detail(order_id,product_id,product_name,product_price,product_icon,count)
+        values(
+            #{orderId},#{productId},#{productName},#{productPrice},#{productIcon},#{count}
+        )
+    </insert>
+
+    <update id="updateOrderMaster" parameterType="OrderMaster">
+        update dinner_order_master set status=#{status} where id=#{orderId}
+    </update>
+
+</mapper>

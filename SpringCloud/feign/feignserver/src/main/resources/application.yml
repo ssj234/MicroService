@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: feignserver
+# 设置http端口
+server:
+  port: 9871
+
+target:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${target.port}/eureka/
